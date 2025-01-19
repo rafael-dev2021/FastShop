@@ -11,8 +11,6 @@
     <ItemGroup>
       <Folder Include="Configuration\" />
       <Folder Include="Context\" />
-      <Folder Include="Repositories\Products\Fashion\" />
-      <Folder Include="Repositories\Products\Technology\" />
     </ItemGroup>
 
     <ItemGroup>

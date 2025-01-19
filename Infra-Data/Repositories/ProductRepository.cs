@@ -8,34 +8,39 @@ using System.Threading.Tasks;
 
 namespace Infra_Data.Repositories
 {
-    internal class CategoryRepository : ICategoryRepository
+    internal class ProductRepository : IProductRepository
     {
-        public Task<Category> CreateAsync(Category entity)
+        public Task<Product> GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> DeleteAsync(Category entity)
+        public Task<IEnumerable<Product>> GetProductsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> GetByIdAsync(int? id)
+        public Task<IEnumerable<Product>> GetProductsBestSellersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<CategoryWithProductCount>> GetCategoriesWithProductCountAsync()
+        public Task<IEnumerable<Product>> GetProductsByCategoriesAsync(string categoryStr)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Category>> GetEntitiesAsync()
+        public Task<IEnumerable<Product>> GetProductsDailyOffersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> UpdateAsync(Category entity)
+        public Task<IEnumerable<Product>> GetProductsFavoritesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Product>> GetSearchProductAsync(string keyword)
         {
             throw new NotImplementedException();
         }
