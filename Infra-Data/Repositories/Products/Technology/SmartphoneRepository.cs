@@ -1,38 +1,43 @@
 ﻿using Domain.Entities.Products.Technology.T_Smartphones;
+using Domain.Interfaces.Products.Fashion;
 using Domain.Interfaces.Products.Technology;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Infra_Data.Repositories.Products.Technology
 {
-    internal class SmartphoneRepository : ISmartphoneRepository
+    public class SmartphoneRepository(AppDbContext appDbContext) : ISmartphoneRepository
     {
-        public Task<Smartphone> CreateAsync(Smartphone entity)
+        public async Task<Smartphone> CreateAsync(Smartphone entity)
         {
-            throw new NotImplementedException();
+            await appDbContext.AddAsync(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Smartphone> DeleteAsync(Smartphone entity)
+        public async Task<Smartphone> DeleteAsync(Smartphone entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Remove(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Smartphone> GetByIdAsync(int? id)
-        {
-            throw new NotImplementedException();
+        public async Task<Smartphone> GetByIdAsync(int? id)
+        { 
+            return await appDbContext.Smartphones.FindAsync(id);
         }
 
-        public Task<IEnumerable<Smartphone>> GetEntitiesAsync()
+        public async Task<IEnumerable<Smartphone>> GetEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Smartphones.ToListAsync();
         }
 
-        public Task<Smartphone> UpdateAsync(Smartphone entity)
+        public async Task<Smartphone> UpdateAsync(Smartphone entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Update(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }

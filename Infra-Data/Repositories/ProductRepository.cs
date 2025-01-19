@@ -1,26 +1,25 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Interfaces.Products.Fashion;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra_Data.Repositories
 {
-    internal class ProductRepository : IProductRepository
+    public class ProductRepository(AppDbContext appDbContext) : IProductRepository
     {
-        public Task<Product> GetByIdAsync(int? id)
+        public async Task<Product> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await appDbContext.Products
+                .FirstOrDefaultAsync(product => product.Id == id);
         }
 
-        public Task<IEnumerable<Product>> GetProductsAsync()
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Products.ToListAsync();
         }
 
-        public Task<IEnumerable<Product>> GetProductsBestSellersAsync()
+        public async Task<IEnumerable<Product>> GetProductsBestSellersAsync()
         {
             throw new NotImplementedException();
         }

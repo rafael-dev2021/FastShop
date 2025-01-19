@@ -1,38 +1,41 @@
 ﻿using Domain.Entities.Products.Fashion.F_Shoes;
 using Domain.Interfaces.Products.Fashion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra_Data.Repositories.Products.Fashion
 {
-    internal class ShoesRepository : IShoesRepository
+    public class ShoesRepository(AppDbContext appDbContext) : IShoesRepository
     {
-        public Task<Shoes> CreateAsync(Shoes entity)
+        public async Task<Shoes> CreateAsync(Shoes entity)
         {
-            throw new NotImplementedException();
+            await appDbContext.AddAsync(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Shoes> DeleteAsync(Shoes entity)
+        public async Task<Shoes> DeleteAsync(Shoes entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Remove(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Shoes> GetByIdAsync(int? id)
+        public async Task<Shoes> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await appDbContext.Shoes.FindAsync(id);
         }
 
-        public Task<IEnumerable<Shoes>> GetEntitiesAsync()
+        public async Task<IEnumerable<Shoes>> GetEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Shoes.ToListAsync();
         }
 
-        public Task<Shoes> UpdateAsync(Shoes entity)
+        public async Task<Shoes> UpdateAsync(Shoes entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Update(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }

@@ -1,37 +1,40 @@
 ﻿using Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra_Data.Repositories
 {
-    internal class GenericCrudRepository<T> : IGenericCrudRepository<T> where T : class
+    public class GenericCrudRepository<T>(AppDbContext appDbContext) : IGenericCrudRepository<T> where T : class
     {
-        public Task<T> CreateAsync(T entity)
+        public async Task<T> CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await appDbContext.AddAsync(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<T> DeleteAsync(T entity)
+        public async Task<T> DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Remove(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<T> GetByIdAsync(int? id)
+        public async Task<T> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+           return await appDbContext.Set<T>().FindAsync(id);
         }
 
-        public Task<IEnumerable<T>> GetEntitiesAsync()
+        public async Task<IEnumerable<T>> GetEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Set<T>().ToListAsync();
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Update(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }

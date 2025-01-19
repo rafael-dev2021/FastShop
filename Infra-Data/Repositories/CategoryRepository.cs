@@ -1,43 +1,49 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra_Data.Repositories
 {
-    internal class CategoryRepository : ICategoryRepository
+    public class CategoryRepository(AppDbContext appDbContext) : ICategoryRepository
     {
-        public Task<Category> CreateAsync(Category entity)
+        public async Task<Category> CreateAsync(Category entity)
+        {
+            await appDbContext.AddAsync(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task<Category> DeleteAsync(Category entity)
+        {
+            appDbContext.Remove(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task<Category> GetByIdAsync(int? id)
+        {
+            var categoryId = appDbContext.Categories
+                .Include(products => products.Products)
+                .FirstOrDefaultAsync(category => category.Id == id);
+            return await categoryId;
+        }
+
+        public async Task<List<CategoryWithProductCount>> GetCategoriesWithProductCountAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> DeleteAsync(Category entity)
+        public async Task<IEnumerable<Category>> GetEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Categories.ToListAsync();
         }
 
-        public Task<Category> GetByIdAsync(int? id)
+        public async Task<Category> UpdateAsync(Category entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<CategoryWithProductCount>> GetCategoriesWithProductCountAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Category>> GetEntitiesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Category> UpdateAsync(Category entity)
-        {
-            throw new NotImplementedException();
+            appDbContext.Update(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }

@@ -1,38 +1,42 @@
 ﻿using Domain.Entities.Products.Technology.T_Games;
+using Domain.Interfaces.Products.Fashion;
 using Domain.Interfaces.Products.Technology;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra_Data.Repositories.Products.Technology
 {
-    internal class GameRepository : IGameRepository
+    public class GameRepository(AppDbContext appDbContext) : IGameRepository
     {
-        public Task<Game> CreateAsync(Game entity)
+        public async Task<Game> CreateAsync(Game entity)
         {
-            throw new NotImplementedException();
+            await appDbContext.AddAsync(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Game> DeleteAsync(Game entity)
+        public async Task<Game> DeleteAsync(Game entity)
         {
-            throw new NotImplementedException();
+            appDbContext.Remove(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Game> GetByIdAsync(int? id)
+        public async Task<Game> GetByIdAsync(int? id)
+        { 
+            return await appDbContext.Games.FindAsync(id);
+        }
+        
+        public async Task<IEnumerable<Game>> GetEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return await appDbContext.Games.ToListAsync();
         }
 
-        public Task<IEnumerable<Game>> GetEntitiesAsync()
+        public async Task<Game> UpdateAsync(Game entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Game> UpdateAsync(Game entity)
-        {
-            throw new NotImplementedException();
+            appDbContext.Update(entity);
+            await appDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }
