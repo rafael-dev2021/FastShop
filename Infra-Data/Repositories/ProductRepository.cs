@@ -1,47 +1,83 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
-using Domain.Interfaces.Products.Fashion;
 using Infra_Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra_Data.Repositories
+namespace Infra_Data.Repositories;
+
+public class ProductRepository(AppDbContext appDbContext) : IProductRepository
 {
-    public class ProductRepository(AppDbContext appDbContext) : IProductRepository
+    public async Task<IEnumerable<Product>> GetProductsAsync()
     {
-        public async Task<Product> GetByIdAsync(int? id)
-        {
-            return await appDbContext.Products
-                .FirstOrDefaultAsync(product => product.Id == id);
-        }
+        return await appDbContext.Products
+            .AsNoTracking()
+            .Include(category => category.Category)
+            .ToListAsync();
+    }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
-        {
-            return await appDbContext.Products.ToListAsync();
-        }
+    public async Task<Product> GetByIdAsync(int? id)
+    {
+        return (await appDbContext.Products
+            .Include(category => category.Category)
+            .FirstOrDefaultAsync(x => x.Id == id))!;
+    }
 
-        public async Task<IEnumerable<Product>> GetProductsBestSellersAsync()
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<IEnumerable<Product>> GetProductsBestSellersAsync()
+    {
+        var products = await GetProductsAsync();
 
-        public Task<IEnumerable<Product>> GetProductsByCategoriesAsync(string categoryStr)
-        {
-            throw new NotImplementedException();
-        }
+        return products
+            .Where(x => x.FlagsObjectValue.IsBestSeller)
+            .OrderBy(x => x.Id)
+            .ThenBy(x => x.Name)
+            .ToList();
+    }
 
-        public Task<IEnumerable<Product>> GetProductsDailyOffersAsync()
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<IEnumerable<Product>> GetProductsDailyOffersAsync()
+    {
+        var products = await GetProductsAsync();
 
-        public Task<IEnumerable<Product>> GetProductsFavoritesAsync()
-        {
-            throw new NotImplementedException();
-        }
+        return products
+            .Where(x => x.FlagsObjectValue.IsDailyOffer)
+            .OrderBy(x => x.Id)
+            .ThenBy(x => x.Name)
+            .ToList();
+    }
 
-        public Task<IEnumerable<Product>> GetSearchProductAsync(string keyword)
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<IEnumerable<Product>> GetProductsFavoritesAsync()
+    {
+        var products = await GetProductsAsync();
+
+        return products
+            .Where(x => x.FlagsObjectValue.IsFavorite)
+            .OrderBy(x => x.Id)
+            .ThenBy(x => x.Name)
+            .ToList();
+    }
+
+    public async Task<IEnumerable<Product>> GetProductsByCategoriesAsync(string categoryStr)
+    {
+        return await appDbContext.Products
+            .AsNoTracking()
+            .Where(category => category.Category!.Name.Equals(categoryStr))
+            .Include(category => category.Category)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Product>> GetSearchProductAsync(string keyword)
+    {
+        var products = await GetProductsAsync();
+
+        var filteredProducts = products
+            .Where(x =>
+                x.Name.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
+                x.Category!.Name.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
+                x.SpecificationObjectValue.Brand.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
+                x.SpecificationObjectValue.Model.Contains(keyword, StringComparison.CurrentCultureIgnoreCase))
+            .OrderBy(x => x.Id)
+            .ThenBy(x => x.Name)
+            .ToList();
+
+        return filteredProducts;
     }
 }
