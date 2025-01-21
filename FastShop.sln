@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidations", "Fluent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{178F4561-DD36-4141-8A4C-900B40A89DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra-Ioc", "Infra-Ioc\Infra-Ioc.csproj", "{F1E47E6F-62D6-468C-ABB5-D104D689B562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{BFCA4C66-6AD8-4A46-AF5B-C46CCB19A59E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{178F4561-DD36-4141-8A4C-900B40A89DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178F4561-DD36-4141-8A4C-900B40A89DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178F4561-DD36-4141-8A4C-900B40A89DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E47E6F-62D6-468C-ABB5-D104D689B562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E47E6F-62D6-468C-ABB5-D104D689B562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E47E6F-62D6-468C-ABB5-D104D689B562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E47E6F-62D6-468C-ABB5-D104D689B562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCA4C66-6AD8-4A46-AF5B-C46CCB19A59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCA4C66-6AD8-4A46-AF5B-C46CCB19A59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCA4C66-6AD8-4A46-AF5B-C46CCB19A59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCA4C66-6AD8-4A46-AF5B-C46CCB19A59E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
