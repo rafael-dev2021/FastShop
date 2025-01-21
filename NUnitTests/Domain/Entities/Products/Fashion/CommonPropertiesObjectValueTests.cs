@@ -2,7 +2,7 @@
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.ObjectValues.ProductObjectValue;
 
-namespace UnitTests.Domain.Entities.Products.Fashion;
+namespace NUnitTests.Domain.Entities.Products.Fashion;
 
 [TestFixture]
 public class CommonPropertiesObjectValueTests

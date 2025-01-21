@@ -2,7 +2,7 @@
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Games.ObjectValues;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
 
 [TestFixture]
 public class RequirementObjectValueTests

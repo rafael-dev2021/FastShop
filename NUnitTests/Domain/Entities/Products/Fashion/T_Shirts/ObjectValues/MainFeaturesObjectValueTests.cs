@@ -3,7 +3,7 @@ using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Fashion.F_TShirts.ObjectValues;
 using NUnit.Framework;
 
-namespace UnitTests.Domain.Entities.Products.Fashion.T_Shirts.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Fashion.T_Shirts.ObjectValues;
 
 [TestFixture]
 public class MainFeaturesObjectValueTests

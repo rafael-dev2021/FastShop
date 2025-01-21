@@ -2,7 +2,7 @@
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
 
 [TestFixture]
 public class FeatureObjectValueTests

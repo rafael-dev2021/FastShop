@@ -2,7 +2,7 @@
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Fashion.F_Shoes.ObjectValues;
 
-namespace UnitTests.Domain.Entities.Products.Fashion.Shoes.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Fashion.Shoes.ObjectValues;
 
 [TestFixture]
 public class MaterialObjectValueTests

@@ -2,7 +2,7 @@
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities;
 
-namespace UnitTests.Domain.Entities;
+namespace NUnitTests.Domain.Entities;
 
 [TestFixture]
 public class ProductTests
