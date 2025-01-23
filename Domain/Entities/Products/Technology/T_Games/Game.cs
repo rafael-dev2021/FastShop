@@ -22,6 +22,7 @@ public sealed class Game : Product
         GeneralFeaturesObjectValue generalFeaturesObjectValue,
         MediaSpecificationObjectValue mediaSpecificationObjectValue,
         RequirementObjectValue requirementObjectValue,
+        CommonPropertiesObjectValue? commonPropertiesObjectValue,
         int categoryId) :
         base(
             name,
@@ -32,6 +33,7 @@ public sealed class Game : Product
             priceObjectValue,
             specificationObjectValue,
             warrantyObjectValue,
+            commonPropertiesObjectValue,
             categoryId)
     {
         GeneralFeaturesObjectValue = generalFeaturesObjectValue;
@@ -52,6 +54,7 @@ public sealed class Game : Product
         GeneralFeaturesObjectValue generalFeaturesObjectValue,
         MediaSpecificationObjectValue mediaSpecificationObjectValue,
         RequirementObjectValue requirementObjectValue,
+        CommonPropertiesObjectValue? commonPropertiesObjectValue,
         int categoryId)
     {
         UpdateProduct(
@@ -64,6 +67,7 @@ public sealed class Game : Product
                 priceObjectValue,
                 specificationObjectValue,
                 warrantyObjectValue,
+                commonPropertiesObjectValue,
                 categoryId);
         
         GeneralFeaturesObjectValue = generalFeaturesObjectValue;
@@ -71,7 +75,7 @@ public sealed class Game : Product
         RequirementObjectValue = requirementObjectValue;
     }
 
-    public GeneralFeaturesObjectValue GeneralFeaturesObjectValue { get; private set; }
-    public MediaSpecificationObjectValue MediaSpecificationObjectValue { get; private set; }
-    public RequirementObjectValue RequirementObjectValue { get; private set; }
+    public GeneralFeaturesObjectValue? GeneralFeaturesObjectValue { get; private set; }
+    public MediaSpecificationObjectValue? MediaSpecificationObjectValue { get; private set; }
+    public RequirementObjectValue? RequirementObjectValue { get; private set; }
 }
