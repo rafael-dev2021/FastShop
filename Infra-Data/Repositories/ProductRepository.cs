@@ -26,33 +26,39 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
     {
         var products = await GetProductsAsync();
 
-        return products
-            .Where(x => x.FlagsObjectValue.IsBestSeller)
-            .OrderBy(x => x.Id)
-            .ThenBy(x => x.Name)
-            .ToList();
+        return
+        [
+            .. products
+                .Where(item => item.FlagsObjectValue!.IsBestSeller)
+                .OrderBy(x => x.Id)
+                .ThenBy(x => x.Name)
+        ];
     }
 
     public async Task<IEnumerable<Product>> GetProductsDailyOffersAsync()
     {
         var products = await GetProductsAsync();
 
-        return products
-            .Where(x => x.FlagsObjectValue.IsDailyOffer)
-            .OrderBy(x => x.Id)
-            .ThenBy(x => x.Name)
-            .ToList();
+        return
+        [
+            .. products
+                .Where(item => item.FlagsObjectValue!.IsDailyOffer)
+                .OrderBy(x => x.Id)
+                .ThenBy(x => x.Name)
+        ];
     }
 
     public async Task<IEnumerable<Product>> GetProductsFavoritesAsync()
     {
         var products = await GetProductsAsync();
 
-        return products
-            .Where(x => x.FlagsObjectValue.IsFavorite)
-            .OrderBy(x => x.Id)
-            .ThenBy(x => x.Name)
-            .ToList();
+        return
+        [
+            .. products
+                .Where(item => item.FlagsObjectValue!.IsFavorite)
+                .OrderBy(x => x.Id)
+                .ThenBy(x => x.Name)
+        ];
     }
 
     public async Task<IEnumerable<Product>> GetProductsByCategoriesAsync(string categoryStr)
@@ -72,7 +78,7 @@ public class ProductRepository(AppDbContext appDbContext) : IProductRepository
             .Where(x =>
                 x.Name.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
                 x.Category!.Name.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
-                x.SpecificationObjectValue.Brand.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
+                x.SpecificationObjectValue!.Brand.Contains(keyword, StringComparison.CurrentCultureIgnoreCase) ||
                 x.SpecificationObjectValue.Model.Contains(keyword, StringComparison.CurrentCultureIgnoreCase))
             .OrderBy(x => x.Id)
             .ThenBy(x => x.Name)

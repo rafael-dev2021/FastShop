@@ -30,6 +30,19 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             });
         
         builder
+            .OwnsOne(x => x.FlagsObjectValue, flagsObj =>
+            {
+                flagsObj.Property(pd => pd.IsFavorite)
+                    .HasDefaultValue(false);
+                
+                flagsObj.Property(pd => pd.IsDailyOffer)
+                    .HasDefaultValue(false);
+
+                flagsObj.Property(pd => pd.IsBestSeller)
+                    .HasDefaultValue(false);
+            });
+        
+        builder
             .OwnsOne(x => x.WarrantyObjectValue, warrantyObj =>
             {
                 warrantyObj.Property(pd => pd.WarrantyLength)
