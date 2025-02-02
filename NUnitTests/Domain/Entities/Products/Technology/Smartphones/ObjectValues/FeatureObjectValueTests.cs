@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
+using Xunit;
 
 namespace NUnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
 
@@ -9,6 +10,7 @@ public class FeatureObjectValueTests
 { 
     private readonly FeatureObjectValueValidator _validator = new();
     
+    [Fact]
     [Test]
     public void CellNetworkTechnology_WhenEmpty_ShouldHaveValidationError()
     {
@@ -22,6 +24,7 @@ public class FeatureObjectValueTests
             .WithErrorMessage("Cell network technology cannot be empty.");
     }
     
+    [Fact]
     [Test]
     public void CellNetworkTechnology_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -35,6 +38,7 @@ public class FeatureObjectValueTests
             .WithErrorMessage("Cell network technology must have a maximum length of 30 characters.");
     }
     
+    [Fact]
     [Test]
     public void VirtualAssistant_WhenEmpty_ShouldHaveValidationError()
     {
@@ -48,6 +52,7 @@ public class FeatureObjectValueTests
             .WithErrorMessage("Virtual assistant cannot be empty.");
     }
     
+    [Fact]
     [Test]
     public void VirtualAssistant_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -61,6 +66,7 @@ public class FeatureObjectValueTests
             .WithErrorMessage("Virtual assistant must have a maximum length of 50 characters.");
     }
     
+    [Fact]
     [Test]
     public void ManufacturerPartNumber_WhenEmpty_ShouldHaveValidationError()
     {
@@ -74,6 +80,7 @@ public class FeatureObjectValueTests
             .WithErrorMessage("Manufacturer part number cannot be empty.");
     }
     
+    [Fact]
     [Test]
     public void ManufacturerPartNumber_WhenExceedsMaxLength_ShouldHaveValidationError()
     {

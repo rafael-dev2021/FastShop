@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Products.Fashion.F_TShirt.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Fashion.F_TShirts.ObjectValues;
+using Xunit;
 
 namespace NUnitTests.Domain.Entities.Products.Fashion.T_Shirts.ObjectValues;
 
@@ -9,6 +10,7 @@ public class OtherFeaturesObjectValueTests
 {
     private readonly OtherFeaturesObjectValueValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Composition_WhenEmpty_ShouldHaveValidationError()
     {
@@ -22,6 +24,7 @@ public class OtherFeaturesObjectValueTests
             .WithErrorMessage("Composition cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Composition_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -35,6 +38,7 @@ public class OtherFeaturesObjectValueTests
             .WithErrorMessage("Composition must have a maximum length of 15 characters.");
     }
 
+    [Fact]
     [Test]
     public void MainMaterial_WhenEmpty_ShouldHaveValidationError()
     {
@@ -48,6 +52,7 @@ public class OtherFeaturesObjectValueTests
             .WithErrorMessage("Main material cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void MainMaterial_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -61,6 +66,7 @@ public class OtherFeaturesObjectValueTests
             .WithErrorMessage("Main material must have a maximum length of 15 characters.");
     }
 
+    [Fact]
     [Test]
     public void UnitsPerKit_WhenZero_ShouldHaveValidationError()
     {
@@ -74,6 +80,7 @@ public class OtherFeaturesObjectValueTests
             .WithErrorMessage("Units per kit must be greater than zero.");
     }
 
+    [Fact]
     [Test]
     public void WithRecycledMaterials_ShouldNotHaveValidationError()
     {
@@ -86,6 +93,7 @@ public class OtherFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.WithRecycledMaterials);
     }
 
+    [Fact]
     [Test]
     public void ItsSporty_ShouldNotHaveValidationError()  
     {

@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities;
+using Xunit;
 
 namespace NUnitTests.Domain.Entities;
 
@@ -10,6 +11,7 @@ public class ProductTests
     private readonly ProductValidator _validator = new();
     private static readonly string[] SourceArray1 = ["Image1.jpg", "Image2.jpg"];
 
+    [Fact]
     [Test]
     public void Name_WhenEmpty_ShouldHaveValidationError()
     {
@@ -23,6 +25,7 @@ public class ProductTests
             .WithErrorMessage("Name cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Name_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -37,6 +40,7 @@ public class ProductTests
     }
 
 
+    [Fact]
     [Test]
     public void Description_WhenEmpty_ShouldHaveValidationError()
     {
@@ -50,6 +54,7 @@ public class ProductTests
             .WithErrorMessage("Description cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Description_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -63,6 +68,7 @@ public class ProductTests
             .WithErrorMessage("Description cannot be more than 10000 characters.");
     }
 
+    [Fact]
     [Test]
     public void ImagesUrl_WhenEmpty_ShouldHaveValidationError()
     {
@@ -76,6 +82,7 @@ public class ProductTests
             .WithErrorMessage("Images cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void ImagesUrl_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -89,6 +96,7 @@ public class ProductTests
             .WithErrorMessage("Images cannot be more than 800 characters.");
     }
     
+    [Fact]
     [Test]
     public void Stock_WhenZero_ShouldHaveValidationError()
     {

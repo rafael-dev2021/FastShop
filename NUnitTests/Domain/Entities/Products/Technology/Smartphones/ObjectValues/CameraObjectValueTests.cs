@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
+using Xunit;
 
 namespace NUnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
 
@@ -8,6 +9,7 @@ public class CameraObjectValueTests
 { 
     private readonly CameraObjectValueValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_MainCameraSpec_Is_Valid()
     {
@@ -20,6 +22,7 @@ public class CameraObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.MainCameraSpec);
     }
     
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MainCameraSpec_Exceeds_Max_Empty()
     {
@@ -33,6 +36,7 @@ public class CameraObjectValueTests
             .WithErrorMessage("Main camera specification cannot be empty.");
     }
     
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MainCameraSpec_Exceeds_Max_Length()
     {
@@ -46,6 +50,7 @@ public class CameraObjectValueTests
             .WithErrorMessage("Main camera specification must have a maximum length of 15 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_MainCameraFeature_Is_Valid()
     {
@@ -57,6 +62,7 @@ public class CameraObjectValueTests
         // Assert
         result.ShouldNotHaveValidationErrorFor(x => x.MainCameraFeature);
     }
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MainCameraFeature_Exceeds_Max_Empty()
     {
@@ -69,6 +75,7 @@ public class CameraObjectValueTests
         result.ShouldHaveValidationErrorFor(x => x.MainCameraFeature)
             .WithErrorMessage("Main camera feature cannot be empty.");
     }
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MainCameraFeature_Exceeds_Max_Length()
     {
@@ -83,6 +90,7 @@ public class CameraObjectValueTests
     }
     
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SelfieCameraSpec_Exceeds_Max_Length()
     {
@@ -96,6 +104,7 @@ public class CameraObjectValueTests
             .WithErrorMessage("Selfie camera specification must have a maximum length of 15 characters.");
     }
     
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_SelfieCameraSpec_Is_Valid()
     {
@@ -108,6 +117,7 @@ public class CameraObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.SelfieCameraSpec);
     }
     
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SelfieCameraSpec_Exceeds_Max_Empty()
     {
@@ -122,6 +132,7 @@ public class CameraObjectValueTests
     }
     
  
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_SelfieCameraFeature_Is_Valid()
     {
@@ -134,6 +145,7 @@ public class CameraObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.SelfieCameraFeature);
     }
     
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SelfieCameraFeature_Exceeds_Max_Empty()
     {
@@ -147,6 +159,7 @@ public class CameraObjectValueTests
             .WithErrorMessage("Selfie camera feature cannot be empty.");
     }
     
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SelfieCameraFeature_Exceeds_Max_Length()
     {
