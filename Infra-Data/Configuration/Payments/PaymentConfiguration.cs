@@ -1,0 +1,35 @@
+﻿using Domain.Entities.Payments;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Infra_Data.Configuration.Payments;
+
+public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
+{
+    public void Configure(EntityTypeBuilder<Payment> builder)
+    {
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Amount).HasPrecision(18, 2);
+        builder.Property(u => u.Ssn).HasMaxLength(15);
+
+        builder.OwnsOne(x => x.PaymentMethodObjectValue, paymentMethod =>
+        {
+            paymentMethod.OwnsOne(pm => pm.PaymentStatusObjectValue, paymentStatus =>
+            {
+                paymentStatus.Property(ps => ps.PaymentStatus).IsRequired();
+            });
+
+            paymentMethod.Property(pm => pm.PaymentMethod).IsRequired();
+        });
+
+        builder.HasOne(p => p.CreditCard)
+               .WithMany()
+               .HasForeignKey(p => p.CreditCardId)
+               .OnDelete(DeleteBehavior.NoAction); 
+
+        builder.HasOne(p => p.DebitCard)
+               .WithMany()
+               .HasForeignKey(p => p.DebitCardId)
+               .OnDelete(DeleteBehavior.NoAction); 
+    }
+}
