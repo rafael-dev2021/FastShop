@@ -17,10 +17,14 @@ public class Product
 
     public DataObjectValue? DataObjectValue { get; protected set; }
     public FlagsObjectValue? FlagsObjectValue { get; protected set; }
-    public PriceObjectValue? PriceObjectValue { get; protected set; } 
-    public SpecificationObjectValue? SpecificationObjectValue { get; protected set; } 
-    public WarrantyObjectValue? WarrantyObjectValue { get; protected set; } 
-    public CommonPropertiesObjectValue? CommonPropertiesObjectValue { get; protected set; } 
+    public PriceObjectValue? PriceObjectValue { get; protected set; }
+    public SpecificationObjectValue? SpecificationObjectValue { get; protected set; }
+    public WarrantyObjectValue? WarrantyObjectValue { get; protected set; }
+    public CommonPropertiesObjectValue? CommonPropertiesObjectValue { get; protected set; }
+
+    public Product()
+    {
+    }
 
     public Product(int id, string name, string description, List<string> imagesUrl, int stock, int categoryId)
     {
@@ -86,6 +90,8 @@ public class Product
 
     public void SetId(int id) => Id = id;
     public void SetName(string name) => Name = name;
+    public void SetDescription(string description) => Description = description;
+    public void SetImagesUrl(List<string> images) => ImagesUrl = images;
     public void SetStock(int stock) => Stock = stock;
     public void SetCategoryId(int categoryId) => CategoryId = categoryId;
     public void SetFlagsObjectValue(FlagsObjectValue value) => FlagsObjectValue = value;
