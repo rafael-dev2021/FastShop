@@ -1,14 +1,16 @@
 ﻿using Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
+using Xunit;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
 
 [TestFixture]
 public class DisplayObjectValueTests
 { 
     private readonly DisplayObjectValueValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_DisplayType_Is_Valid()
     {
@@ -21,6 +23,7 @@ public class DisplayObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.DisplayType);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_DisplayResolution_Is_Valid()
     {
@@ -33,6 +36,7 @@ public class DisplayObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.DisplayResolution);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_DisplayProtection_Is_Valid()
     {
@@ -46,6 +50,7 @@ public class DisplayObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.DisplayProtection);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_DisplaySizeInches_Is_Valid()
     {
@@ -58,6 +63,7 @@ public class DisplayObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.DisplaySizeInches);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_DisplayType_Is_Empty()
     {
@@ -70,6 +76,7 @@ public class DisplayObjectValueTests
             .WithErrorMessage("Display type cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_DisplayResolution_Is_Empty()
     {
@@ -82,6 +89,7 @@ public class DisplayObjectValueTests
             .WithErrorMessage("Display resolution cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_DisplayProtection_Is_Empty()
     {
@@ -96,6 +104,7 @@ public class DisplayObjectValueTests
             .WithErrorMessage("Display protection cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_DisplaySizeInches_Is_Zero()
     {

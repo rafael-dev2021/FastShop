@@ -1,8 +1,9 @@
 ﻿using Domain.Entities.Products.Technology.T_Games.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Games.ObjectValues;
+using Xunit;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
 
 [TestFixture]
 public class GeneralFeaturesObjectValueTests
@@ -10,6 +11,7 @@ public class GeneralFeaturesObjectValueTests
     private readonly GeneralFeaturesObjectValueValidator _validator = new();
 
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Collection_Is_Valid()
     {
@@ -23,6 +25,7 @@ public class GeneralFeaturesObjectValueTests
     }
 
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Collection_Is_Empty()
     {
@@ -37,6 +40,7 @@ public class GeneralFeaturesObjectValueTests
     }
 
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Collection_Exceeds_Maximum_Length()
     {
@@ -50,6 +54,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Collection must have a maximum length of 25 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Saga_Is_Valid()
     {
@@ -62,6 +67,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Saga);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Saga_Is_Empty()
     {
@@ -75,6 +81,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Saga cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Saga_Exceeds_Maximum_Length()
     {
@@ -88,6 +95,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Saga must have a maximum length of 40 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Title_Is_Valid()
     {
@@ -100,6 +108,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Title);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Title_Is_Empty()
     {
@@ -113,6 +122,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Title cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Title_Exceeds_Maximum_Length()
     {
@@ -126,6 +136,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Title must have a maximum length of 50 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Edition_Is_Valid()
     {
@@ -138,6 +149,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Edition);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Edition_Is_Empty()
     {
@@ -151,6 +163,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Edition cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Edition_Exceeds_Maximum_Length()
     {
@@ -164,6 +177,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Edition must have a maximum length of 25 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Platform_Is_Valid()
     {
@@ -176,6 +190,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Platform);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Platform_Is_Empty()
     {
@@ -189,6 +204,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Platform cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Platform_Exceeds_Maximum_Length()
     {
@@ -202,6 +218,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Platform must have a maximum length of 15 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Developers_Is_Valid()
     {
@@ -214,6 +231,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Developers);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Developers_Is_Empty()
     {
@@ -227,6 +245,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Developers cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Developers_Exceeds_Maximum_Length()
     {
@@ -240,6 +259,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Developers must have a maximum length of 40 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Publishers_Is_Valid()
     {
@@ -252,6 +272,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Publishers);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Publishers_Is_Empty()
     {
@@ -265,6 +286,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Publishers cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Publishers_Exceeds_Maximum_Length()
     {
@@ -278,6 +300,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Publishers must have a maximum length of 15 characters.");
     }
     
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_GameRating_Is_Valid()
     {
@@ -290,6 +313,7 @@ public class GeneralFeaturesObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.GameRating);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_GameRating_Is_Empty()
     {
@@ -303,6 +327,7 @@ public class GeneralFeaturesObjectValueTests
             .WithErrorMessage("Game rating cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_GameRating_Is_Not_Uppercase_Letter()
     {

@@ -1,14 +1,16 @@
 ﻿using Domain.Entities.Products.Technology.T_Games.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Games.ObjectValues;
+using Xunit;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Games.ObjectValues;
 
 [TestFixture]
 public class MediaSpecificationObjectValueTests
 { 
     private readonly MediaSpecificationObjectValueValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_Format_Is_Valid()
     {
@@ -21,6 +23,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.Format);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Format_Is_Empty()
     {
@@ -34,6 +37,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Format cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_Format_Exceeds_Maximum_Length()
     {
@@ -48,6 +52,7 @@ public class MediaSpecificationObjectValueTests
     }
 
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_AudioLanguages_Is_Valid()
     {
@@ -60,6 +65,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.AudioLanguages);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_AudioLanguages_Is_Empty()
     {
@@ -73,6 +79,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Audio languages cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_AudioLanguages_Exceeds_Maximum_Length()
     {
@@ -87,6 +94,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Audio languages must have a maximum length of 50 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_SubtitleLanguages_Is_Valid()
     {
@@ -99,6 +107,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.SubtitleLanguages);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SubtitleLanguages_Is_Empty()
     {
@@ -112,6 +121,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Subtitle languages cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_SubtitleLanguages_Exceeds_Maximum_Length()
     {
@@ -125,6 +135,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Subtitle languages must have a maximum length of 30 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_ScreenLanguages_Is_Valid()
     {
@@ -137,6 +148,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.ScreenLanguages);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_ScreenLanguages_Is_Empty()
     {
@@ -150,6 +162,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Screen languages cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_ScreenLanguages_Exceeds_Maximum_Length()
     {
@@ -163,6 +176,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Screen languages must have a maximum length of 30 characters.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_MaximumNumberOfOfflinePlayers_Is_Greater_Or_Equal_To_Zero()
     {
@@ -175,6 +189,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.MaximumNumberOfOfflinePlayers);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MaximumNumberOfOfflinePlayers_Is_Less_Than_Zero()
     {
@@ -188,6 +203,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Maximum number of offline players must be greater than or equal to zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_MaximumNumberOfOnlinePlayers_Is_Greater_Or_Equal_To_Zero()
     {
@@ -200,6 +216,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.MaximumNumberOfOnlinePlayers);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_MaximumNumberOfOnlinePlayers_Is_Less_Than_Zero()
     {
@@ -213,6 +230,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Maximum number of online players must be greater than or equal to zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_FileSize_Is_Greater_Or_Equal_To_Zero()
     {
@@ -225,6 +243,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.FileSize);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_FileSize_Is_Less_Than_Zero()
     {
@@ -238,6 +257,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("File size must be greater than or equal to zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_IsMultiplayer_Is_Valid()
     {
@@ -250,6 +270,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.IsMultiplayer);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_IsOnline_Is_Valid()
     {
@@ -262,6 +283,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.IsOnline);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_IsOffline_Is_Valid()
     {
@@ -274,6 +296,7 @@ public class MediaSpecificationObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.IsOffline);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_IsMultiplayer_Is_Invalid()
     {
@@ -287,6 +310,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Is multiplayer must be true or false.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_IsOnline_Is_Invalid()
     {
@@ -300,6 +324,7 @@ public class MediaSpecificationObjectValueTests
             .WithErrorMessage("Is online must be true or false.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_IsOffline_Is_Invalid()
     {

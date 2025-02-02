@@ -1,14 +1,16 @@
 ﻿using Domain.Entities;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities;
+using Xunit;
 
-namespace UnitTests.Domain.Entities;
+namespace NUnitTests.Domain.Entities;
 
 [TestFixture]
 public class CategoryTests
 {
     private readonly CategoryValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Name_WhenEmpty_ShouldHaveValidationError()
     {
@@ -21,6 +23,7 @@ public class CategoryTests
             .WithErrorMessage("Name cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Name_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -33,6 +36,7 @@ public class CategoryTests
             .WithErrorMessage("Name cannot be more than 50 characters.");
     }
 
+    [Fact]
     [Test]
     public void ImagesUrl_WhenEmpty_ShouldHaveValidationError()
     {
@@ -45,6 +49,7 @@ public class CategoryTests
             .WithErrorMessage("Image url cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void ImagesUrl_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -58,6 +63,7 @@ public class CategoryTests
     }
 
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_IsActive_Is_True()
     {

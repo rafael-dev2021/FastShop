@@ -1,14 +1,17 @@
 ﻿using Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.Products.Technology.T_Smartphones.ObjectValues;
+using Xunit;
 
-namespace UnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
+namespace NUnitTests.Domain.Entities.Products.Technology.Smartphones.ObjectValues;
 
 [TestFixture]
 public class DimensionObjectValueTests
 { 
     private readonly DimensionObjectValueValidator _validator = new();
 
+    [Fact]
+    [Test]
     public void Should_Not_Have_Error_When_HeightInches_Is_Valid()
     {
         // Arrange
@@ -20,6 +23,7 @@ public class DimensionObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.HeightInches);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_WidthInches_Is_Valid()
     {
@@ -32,6 +36,7 @@ public class DimensionObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.WidthInches);
     }
 
+    [Fact]
     [Test]
     public void Should_Not_Have_Error_When_ThicknessInches_Is_Valid()
     {
@@ -44,6 +49,7 @@ public class DimensionObjectValueTests
         result.ShouldNotHaveValidationErrorFor(x => x.ThicknessInches);
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_HeightInches_Is_Zero()
     {
@@ -57,6 +63,7 @@ public class DimensionObjectValueTests
             .WithErrorMessage("Height in inches must be greater than zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_WidthInches_Is_Zero()
     {
@@ -70,6 +77,7 @@ public class DimensionObjectValueTests
             .WithErrorMessage("Width in inches must be greater than zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_ThicknessInches_Is_Zero()
     {
@@ -84,6 +92,7 @@ public class DimensionObjectValueTests
             .WithErrorMessage("Thickness in inches must be greater than zero.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_HeightInches_Is_Empty()
     {
@@ -96,6 +105,7 @@ public class DimensionObjectValueTests
             .WithErrorMessage("Height in inches cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_WidthInches_Is_Empty()
     {
@@ -108,6 +118,7 @@ public class DimensionObjectValueTests
             .WithErrorMessage("Width in inches cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Should_Have_Error_When_ThicknessInches_Is_Empty()
     {

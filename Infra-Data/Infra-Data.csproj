@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Infra_Data</RootNamespace>
         <LangVersion>12</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -9,15 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Configuration\" />
-      <Folder Include="Context\" />
-      <Folder Include="Repositories\Products\Fashion\" />
-      <Folder Include="Repositories\Products\Technology\" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
-        <PrivateAssets>all</PrivateAssets>
+        <PrivateAssets>none</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
@@ -25,6 +21,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="9.0.1" />
     </ItemGroup>
 
     <ItemGroup>

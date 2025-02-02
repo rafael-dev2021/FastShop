@@ -1,14 +1,16 @@
 ﻿using Domain.Entities.ObjectValues.ProductObjectValue;
 using FluentValidation.TestHelper;
 using FluentValidations.Domain.Entities.ObjectValues.ProductObjectValue;
+using Xunit;
 
-namespace UnitTests.Domain.Entities.Products.Fashion;
+namespace NUnitTests.Domain.Entities.Products.Fashion;
 
 [TestFixture]
 public class CommonPropertiesObjectValueTests
 {
     private readonly CommonPropertiesValidator _validator = new();
 
+    [Fact]
     [Test]
     public void Gender_WhenEmpty_ShouldHaveValidationError()
     {
@@ -22,6 +24,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Gender cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Gender_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -35,6 +38,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Gender must have a maximum length of 10 characters.");
     }
 
+    [Fact]
     [Test]
     public void Color_WhenEmpty_ShouldHaveValidationError()
     {
@@ -48,6 +52,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Color cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Color_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -61,6 +66,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Color must have a maximum length of 20 characters.");
     }
 
+    [Fact]
     [Test]
     public void Age_WhenEmpty_ShouldHaveValidationError()
     {
@@ -74,6 +80,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Age cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Age_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -87,6 +94,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Age must have a maximum length of 10 characters.");
     }
 
+    [Fact]
     [Test]
     public void RecommendedUses_WhenEmpty_ShouldHaveValidationError()
     {
@@ -100,6 +108,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Recommended uses cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void RecommendedUses_WhenExceedsMaxLength_ShouldHaveValidationError()
     {
@@ -113,6 +122,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Recommended uses must have a maximum length of 15 characters.");
     }
 
+    [Fact]
     [Test]
     public void Size_WhenEmpty_ShouldHaveValidationError()
     {
@@ -126,6 +136,7 @@ public class CommonPropertiesObjectValueTests
             .WithErrorMessage("Size cannot be empty.");
     }
 
+    [Fact]
     [Test]
     public void Size_WhenExceedsMaxLength_ShouldHaveValidationError()
     {

@@ -20,6 +20,7 @@ public sealed class Smartphone : Product
         PriceObjectValue priceObjectValue,
         SpecificationObjectValue specificationObjectValue,
         WarrantyObjectValue warrantyObjectValue,
+        CommonPropertiesObjectValue? commonPropertiesObjectValue,
         BatteryObjectValue batteryObjectValue,
         CameraObjectValue cameraObjectValue,
         DimensionObjectValue dimensionObjectValue,
@@ -38,6 +39,7 @@ public sealed class Smartphone : Product
         priceObjectValue,
         specificationObjectValue,
         warrantyObjectValue,
+        commonPropertiesObjectValue,
         categoryId)
     {
         BatteryObjectValue = batteryObjectValue;
@@ -59,6 +61,7 @@ public sealed class Smartphone : Product
         PriceObjectValue priceObjectValue,
         SpecificationObjectValue specificationObjectValue,
         WarrantyObjectValue warrantyObjectValue,
+        CommonPropertiesObjectValue? commonPropertiesObjectValue,
         BatteryObjectValue batteryObjectValue,
         CameraObjectValue cameraObjectValue,
         DimensionObjectValue dimensionObjectValue,
@@ -78,6 +81,7 @@ public sealed class Smartphone : Product
             priceObjectValue,
             specificationObjectValue,
             warrantyObjectValue,
+            commonPropertiesObjectValue,
             categoryId);
         BatteryObjectValue = batteryObjectValue;
         CameraObjectValue = cameraObjectValue;
@@ -88,11 +92,11 @@ public sealed class Smartphone : Product
         StorageObjectValue = storageObjectValue;
     }
 
-    public BatteryObjectValue BatteryObjectValue { get; private set; }
-    public CameraObjectValue CameraObjectValue { get; private set; }
-    public DimensionObjectValue DimensionObjectValue { get; private set; }
-    public DisplayObjectValue DisplayObjectValue { get; private set; }
-    public FeatureObjectValue FeatureObjectValue { get; private set; }
-    public PlatformObjectValue PlatformObjectValue { get; private set; }
-    public StorageObjectValue StorageObjectValue { get; private set; }
+    public BatteryObjectValue? BatteryObjectValue { get; private set; }
+    public CameraObjectValue? CameraObjectValue { get; private set; }
+    public DimensionObjectValue? DimensionObjectValue { get; private set; }
+    public DisplayObjectValue? DisplayObjectValue { get; private set; }
+    public FeatureObjectValue? FeatureObjectValue { get; private set; }
+    public PlatformObjectValue? PlatformObjectValue { get; private set; }
+    public StorageObjectValue? StorageObjectValue { get; private set; }
 }
