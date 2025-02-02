@@ -11,7 +11,7 @@ namespace Infra_Data.Repositories;
 public class ShoppingCartRepository(AppDbContext appDbContext, IHttpContextAccessor httpContextAccessor)
     : IShoppingCartItemRepository
 {
-    private string ShoppingCartId
+    public string ShoppingCartId
     {
         get
         {
