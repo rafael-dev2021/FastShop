@@ -4,8 +4,10 @@ using Infra_Ioc.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddInfrastructureModule(builder.Configuration);
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddInfrastructureModule(builder.Configuration);
+builder.Services.AddDomainFluentValidationDi();
 builder.Services.AddEnUsCultureInfoDi();
 
 var app = builder.Build();
