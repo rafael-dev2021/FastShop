@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.ObjectValues.ProductObjectValue;
+using Domain.Entities.Reviews;
 
 namespace Domain.Entities;
 
@@ -12,6 +13,7 @@ public class Product
     public int Stock { get; protected set; }
     public int CategoryId { get; protected set; }
     public Category? Category { get; }
+    public ICollection<Review> Reviews { get; } = [];
 
     public DataObjectValue? DataObjectValue { get; protected set; }
     public FlagsObjectValue? FlagsObjectValue { get; protected set; }
